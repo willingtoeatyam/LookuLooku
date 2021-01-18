@@ -10,7 +10,7 @@ import Rank from './Components/Rank/Rank';
 import  particular from './Particles.js';
 
 const app =new Clarifai.App({
-    apiKey: 'ff1d290814384e9b92df1908a2d9f269'
+    apiKey: '16e53b8ca5274236b3c9ef904ce70739'
 });
 
 const particlesOptions = particular;
@@ -20,24 +20,26 @@ class App extends Component {
         super();
         this.state = {
             input:'',
+            imageUrl: ''
         }
     }
 
     onInputChange = (event) => {
-        console.log(event.target.value);        
+        this.setState({ input: event.target.value });
     }
 
     onButtonSubmit = () => {
-        console.log('click');
-        const texxx= app.models.initModel('d02b4508df58432fbb84e800597b8959');
-        console.log('tired', texxx);
-        app.models.predict( "a403429f2ddf4b49b307e318f00e528b" ,"https://models.com/newfaces/dailyduo/47554").then(
-            function(response) {
-                console.log('works' ,response);
-            },
-            function(err){
-                console.log('error oo', err);
-            }
+        this.setState({ imageUrl: this.state.input });
+        app.models.predict( 
+                Clarifai.FACE_DETECT_MODEL ,
+                this.state.input)
+            .then(
+                function(response) {
+                    console.log('works' , response.outputs[0].data.regions[0].region_info.bounding_box);
+                },
+                function(err){
+                    console.log('error oo', err);
+                }
         );
     }
 
@@ -52,7 +54,7 @@ class App extends Component {
                     onInputChange={this.onInputChange} 
                     onButtonSubmit={this.onButtonSubmit}
                 />                
-                <FaceRecognition />
+                <FaceRecognition imageUrl={this.state.imageUrl}/>
             </div>
         );
     }

@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/LookuLooku/static/css/main.2128fabe.chunk.css",
+    "main.js": "/LookuLooku/static/js/main.40bfe8b4.chunk.js",
+    "main.js.map": "/LookuLooku/static/js/main.40bfe8b4.chunk.js.map",
+    "runtime-main.js": "/LookuLooku/static/js/runtime-main.50bb74e3.js",
+    "runtime-main.js.map": "/LookuLooku/static/js/runtime-main.50bb74e3.js.map",
+    "static/css/2.31461e4f.chunk.css": "/LookuLooku/static/css/2.31461e4f.chunk.css",
+    "static/js/2.6902f993.chunk.js": "/LookuLooku/static/js/2.6902f993.chunk.js",
+    "static/js/2.6902f993.chunk.js.map": "/LookuLooku/static/js/2.6902f993.chunk.js.map",
+    "static/js/3.057b7629.chunk.js": "/LookuLooku/static/js/3.057b7629.chunk.js",
+    "static/js/3.057b7629.chunk.js.map": "/LookuLooku/static/js/3.057b7629.chunk.js.map",
+    "index.html": "/LookuLooku/index.html",
+    "static/css/2.31461e4f.chunk.css.map": "/LookuLooku/static/css/2.31461e4f.chunk.css.map",
+    "static/css/main.2128fabe.chunk.css.map": "/LookuLooku/static/css/main.2128fabe.chunk.css.map",
+    "static/js/2.6902f993.chunk.js.LICENSE.txt": "/LookuLooku/static/js/2.6902f993.chunk.js.LICENSE.txt",
+    "static/media/eye.e23f133d.png": "/LookuLooku/static/media/eye.e23f133d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.50bb74e3.js",
+    "static/css/2.31461e4f.chunk.css",
+    "static/js/2.6902f993.chunk.js",
+    "static/css/main.2128fabe.chunk.css",
+    "static/js/main.40bfe8b4.chunk.js"
+  ]
+}

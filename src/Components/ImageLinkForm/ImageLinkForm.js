@@ -10,7 +10,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) =>{
             <div className='center'>
                 <div className='center form pa4 br3 shadow-5'>
                     <input 
-                        className='f4 pa2 w-70 center' type='tex' 
+                        className='f4 pa2 w-70 center' type='tex' placeholder='image url here, please ;)'
                         onChange={onInputChange}
                     />
                     <button 

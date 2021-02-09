@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
-import Clarifai from 'clarifai';
 import './App.css';
 import Navigation from './Components/Navigation/Navigation';
 import SignIn from './Components/SignIn/SignIn';
@@ -11,29 +10,27 @@ import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
 import Rank from './Components/Rank/Rank';
 import  particular from './Particles.js';
 
-const app =new Clarifai.App({
-    apiKey: '16e53b8ca5274236b3c9ef904ce70739'
-});
+
 
 const particlesOptions = particular;
+const initialState = {
+    input:'',
+    imageUrl: '',
+    box: {},
+    route: 'signout',
+    isSignedIn: false,
+    user: {
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined: ''
+    }}
 
 class App extends Component {
     constructor(){
         super();
-        this.state = {
-            input:'',
-            imageUrl: '',
-            box: {},
-            route: 'signout',
-            isSignedIn: false,
-            user: {
-                id: '',
-                name: '',
-                email: '',
-                entries: 0,
-                joined: ''
-            }
-        }
+        this.state = initialState;
     }
 
     loadUser = (data) => {
@@ -69,9 +66,14 @@ class App extends Component {
 
     onButtonSubmit = () => {
         this.setState({ imageUrl: this.state.input });
-        app.models.predict( 
-                Clarifai.FACE_DETECT_MODEL ,
-                this.state.input)
+            fetch('http://localhost:3000/imageurl', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    input: this.state.input
+                })
+            })
+            .then(response => response.json())
             .then(response => {
                 if (response){
                     fetch('http://localhost:3000/image', {
@@ -93,7 +95,7 @@ class App extends Component {
 
     onRouteChange = (route) => {
         if (route === 'signout'){
-            this.setState({ isSignedIn: false})
+            this.setState(initialState)
         } else if (route === 'home'){
             this.setState({ isSignedIn: true})
         }
